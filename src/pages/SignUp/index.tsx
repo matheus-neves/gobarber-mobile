@@ -14,6 +14,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/Feather';
 import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api';
 
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
 import logoImg from '../../assets/logo.png';
@@ -53,15 +54,18 @@ const SignUp: React.FC = () => {
           },
         );
 
-        // await api.post('/users', {
-        //   name,
-        //   email,
-        //   password,
-        // });
+        await api.post('/users', {
+          name,
+          email,
+          password,
+        });
+
         Alert.alert(
           'Cadastro realizado!',
           'Você já pode fazer seu logon no GoBarber',
         );
+
+        navigation.navigate('SignIn');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
