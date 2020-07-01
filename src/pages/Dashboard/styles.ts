@@ -1,10 +1,8 @@
 import styled from 'styled-components/native';
-import { Platform, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RectButton } from 'react-native-gesture-handler';
 import { Provider } from './index';
-
-const platformPaddingTop = Platform.OS === 'ios' ? 24 : 0;
 
 export const Container = styled.View`
   flex: 1;
@@ -13,7 +11,7 @@ export const Container = styled.View`
 export const Header = styled.View`
   padding: 24px;
   margin-bottom: 32px;
-  padding-top: ${getStatusBarHeight() + platformPaddingTop}px;
+  padding-top: ${getStatusBarHeight() + 24}px;
   background: #28262e;
 
   flex-direction: row;
